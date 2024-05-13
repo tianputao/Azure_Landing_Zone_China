@@ -43,7 +43,7 @@ This conceptual architecture represents scale and maturity decisions based on a 
 
 While your specific implementation may vary, as a result of specific business decisions or existing investments in tools that need to persist in your cloud environment, this conceptual architecture will help set a direction for the overall approach your organization takes to designing and implementing a landing zone.
 
-![Azure landing zone conceptual architecture diagram](../enterprise-scale/media/ns-arch-cust-expanded.png)
+![Azure landing zone conceptual architecture diagram]([../enterprise-scale/media/ns-arch-cust-expanded.png](https://github.com/huqianghui/cloud-adoption-framework/blob/deploylz-mooncake/docs/ready/enterprise-scale/media/ns-arch-cust-expanded.png))
 
 ## Azure landing zone accelerator
 
@@ -51,7 +51,7 @@ For organizations where this conceptual architecture fits with the operating mod
 
 The accelerator is an Azure portal-based deployment that will provide a full implementation of the conceptual architecture, along with opinionated configurations for key components such as management groups and policies.
 
-[![`DTA-Button-ALZ`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://aka.ms/caf/ready/accelerator)
+
 [![`DTA-Button-ALZ`](https://eslzfiles.blob.core.chinacloudapi.cn/images/azureChinaIcon.png?sanitize=true)](https://portal.azure.cn/#blade/Microsoft_Azure_CreateUIDef/CustomDeploymentBlade/uri/https%3A%2F%2Feslzfiles.blob.core.chinacloudapi.cn%2Fdefault-landingzone-files%2FeslzArm.json/uiFormDefinitionUri/https%3A%2F%2Feslzfiles.blob.core.chinacloudapi.cn%2Fdefault-landingzone-files%2Feslz-portal.json)
 
 
