@@ -43,7 +43,7 @@ This conceptual architecture represents scale and maturity decisions based on a 
 
 While your specific implementation may vary, as a result of specific business decisions or existing investments in tools that need to persist in your cloud environment, this conceptual architecture will help set a direction for the overall approach your organization takes to designing and implementing a landing zone.
 
-![Azure landing zone conceptual architecture diagram]([../enterprise-scale/media/ns-arch-cust-expanded.png](https://github.com/huqianghui/cloud-adoption-framework/blob/deploylz-mooncake/docs/ready/enterprise-scale/media/ns-arch-cust-expanded.png))
+![Azure landing zone conceptual architecture diagram]((https://github.com/huqianghui/cloud-adoption-framework/blob/deploylz-mooncake/docs/ready/enterprise-scale/media/ns-arch-cust-expanded.png))
 
 ## Azure landing zone accelerator
 
