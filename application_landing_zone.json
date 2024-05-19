@@ -1,0 +1,131 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "applicationVnetCidr": {
+            "type": "string",
+            "metadata": {
+                "description": "The CIDR range for the Application VNet."
+            }
+        },
+        "applicationVnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name for the Application VNet."
+            },
+            "defaultValue": "application-vnet"
+        },
+        "keyVaultName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name for the Key Vault."
+            }
+        },
+        "connectivityHubVnetId": {
+            "type": "string",
+            "metadata": {
+                "description": "The resource ID of the Connectivity Hub VNet."
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "The location for the resources."
+            }
+        }
+    },
+    "variables": {
+        "vnetPeeringName": "[concat(parameters('applicationVnetName'), '-to-hub-peering')]",
+        "hubPeeringName": "[concat(parameters('applicationVnetName'), '-from-hub-peering')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-06-01",
+            "name": "[parameters('applicationVnetName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('applicationVnetCidr')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "default",
+                        "properties": {
+                            "addressPrefix": "[concat(take(split(parameters('applicationVnetCidr'), '/'), 1)[0], '/25')]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+            "apiVersion": "2020-06-01",
+            "name": "[concat(parameters('applicationVnetName'), '/', variables('vnetPeeringName'))]",
+            "properties": {
+                "remoteVirtualNetwork": {
+                    "id": "[parameters('connectivityHubVnetId')]"
+                },
+                "allowVirtualNetworkAccess": true,
+                "allowForwardedTraffic": true,
+                "allowGatewayTransit": false,
+                "useRemoteGateways": true
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('applicationVnetName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "addPeeringToHubVnet",
+            "resourceGroup": "[split(parameters('connectivityHubVnetId'), '/')[4]]",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "1.0.0.0",
+                    "resources": [
+                        {
+                            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+                            "apiVersion": "2020-06-01",
+                            "name": "[concat(split(parameters('connectivityHubVnetId'), '/')[8], '/', variables('vnetPeeringName'))]",
+                            "properties": {
+                                "remoteVirtualNetwork": {
+                                    "id": "[resourceId('Microsoft.Network/virtualNetworks', parameters('applicationVnetName'))]"
+                                },
+                                "allowVirtualNetworkAccess": true,
+                                "allowForwardedTraffic": true,
+                                "allowGatewayTransit": true,
+                                "useRemoteGateways": false
+                            }
+                        }
+                    ]
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('applicationVnetName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2021-04-01-preview",
+            "name": "[parameters('keyVaultName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "sku": {
+                    "family": "A",
+                    "name": "standard"
+                },
+                "tenantId": "[subscription().tenantId]",
+                "accessPolicies": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('applicationVnetName'))]"
+            ]
+        }
+    ]
+}
