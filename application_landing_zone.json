@@ -15,6 +15,19 @@
             },
             "defaultValue": "application-vnet"
         },
+        "defaultSubnetCidr": {
+            "type": "string",
+            "metadata": {
+                "description": "The CIDR range for the default subnet."
+            }
+        },
+        "defaultNSGName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name for the default network security group."
+            },
+            "defaultValue": "default-nsg"
+        },
         "keyVaultName": {
             "type": "string",
             "metadata": {
@@ -41,6 +54,15 @@
     },
     "resources": [
         {
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2020-06-01",
+            "name": "[parameters('defaultNSGName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "securityRules": []
+            }
+        },
+        {
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2020-06-01",
             "name": "[parameters('applicationVnetName')]",
@@ -55,11 +77,17 @@
                     {
                         "name": "default",
                         "properties": {
-                            "addressPrefix": "[concat(take(split(parameters('applicationVnetCidr'), '/'), 1)[0], '/25')]"
+                            "addressPrefix": "[parameters('defaultSubnetCidr')]",
+                            "networkSecurityGroup": {
+                                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('defaultNSGName'))]"
+                            }
                         }
                     }
                 ]
-            }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('defaultNSGName'))]"
+            ]
         },
         {
             "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
