@@ -109,34 +109,58 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2020-06-01",
-            "name": "addPeeringToHubVnet",
-            "resourceGroup": "[split(parameters('connectivityHubVnetId'), '/')[4]]",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "resources": [
-                        {
-                            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-                            "apiVersion": "2020-06-01",
-                            "name": "[concat(split(parameters('connectivityHubVnetId'), '/')[8], '/', variables('vnetPeeringName'))]",
-                            "properties": {
-                                "remoteVirtualNetwork": {
-                                    "id": "[resourceId('Microsoft.Network/virtualNetworks', parameters('applicationVnetName'))]"
-                                },
-                                "allowVirtualNetworkAccess": true,
-                                "allowForwardedTraffic": true,
-                                "allowGatewayTransit": true,
-                                "useRemoteGateways": false
-                            }
-                        }
-                    ]
-                }
-            },
+            "name": "[concat('alz-hub-peering-', parameters('location'), '-', substring(uniqueString(subscription().id),0,6))]",
+            "subscriptionId": "[split(parameters('connectivityHubVnetId'),'/')[2]]",
+            "resourceGroup": "[split(parameters('connectivityHubVnetId'),'/')[4]]",
             "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('applicationVnetName'))]"
-            ]
+              "[parameters('applicationVnetName')]"
+            ],
+            "properties": {
+              "mode": "Incremental",
+              "expressionEvaluationOptions": {
+                "scope": "inner"
+              },
+              "parameters": {
+                "remoteVirtualNetwork": {
+                  "value": "[concat(subscription().id,'/resourceGroups/',resourceGroup().name, '/providers/','Microsoft.Network/virtualNetworks/', parameters('applicationVnetName'))]"
+                },
+                "hubName": {
+                  "value": "[split(parameters('connectivityHubVnetId'),'/')[8]]"
+                }
+              },
+              "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                  "remoteVirtualNetwork": {
+                    "type": "String",
+                    "defaultValue": false
+                  },
+                  "hubName": {
+                    "type": "String",
+                    "defaultValue": false
+                  }
+                },
+                "variables": {},
+                "resources": [
+                  {
+                    "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+                    "name": "[concat(parameters('hubName'),'/',last(split(parameters('remoteVirtualNetwork'),'/')))]",
+                    "apiVersion": "2020-05-01",
+                    "properties": {
+                      "allowVirtualNetworkAccess": true,
+                      "allowForwardedTraffic": true,
+                      "allowGatewayTransit": true,
+                      "useRemoteGateways": false,
+                      "remoteVirtualNetwork": {
+                        "id": "[parameters('remoteVirtualNetwork')]"
+                      }
+                    }
+                  }
+                ],
+                "outputs": {}
+              }
+            }
         },
         {
             "type": "Microsoft.KeyVault/vaults",
