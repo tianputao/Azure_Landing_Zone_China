@@ -626,12 +626,12 @@
                             "name": "enableAsc",
                             "type": "Microsoft.Common.OptionsGroup",
                             "label": "Deploy Microsoft Defender for Cloud and enable security monitoring for your platform and resources",
-                            "defaultValue": "Yes (recommended)",
+                            "defaultValue": "No",
                             "toolTip": "Selecting 'Yes' will enable the options to configure individual Microsoft Defender for Cloud components, and will enable Microsoft Defender for Cloud plans on all subscriptions in the Azure Landing Zone. If 'Yes' is selected when also adding a subscription for management, ARM will deploy resources and enable them for continuous compliance.",
                             "constraints": {
                                 "allowedValues": [
                                     {
-                                        "label": "Yes (recommended)",
+                                        "label": "Yes",
                                         "value": "Yes"
                                     },
                                     {
@@ -859,7 +859,7 @@
                             "name": "enableAscForApis",
                             "type": "Microsoft.Common.OptionsGroup",
                             "label": "Enable Microsoft Defender for Cloud for APIs",
-                            "defaultValue": "Yes (recommended)",
+                            "defaultValue": "No",
                             "toolTip": "If 'Yes' is selected, Microsoft Defender for Cloud will be enabled for APIs.<br>Uses the custom initiative <a href=\"https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Deploy-MDFC-Config.html\">Deploy Microsoft Defender for Cloud configuration</a>.",
                             "visible": "[and(equals(steps('management').enableAsc,'Yes'), or(equals(steps('basics').cloudEnvironment.selection, 'AzureCloud'), equals(steps('basics').cloudEnvironment.selection, 'AzureUSGovernment')))]",
                             "constraints": {
@@ -879,7 +879,7 @@
                             "name": "enableAscForCspm",
                             "type": "Microsoft.Common.OptionsGroup",
                             "label": "Enable Microsoft Defender CSPM",
-                            "defaultValue": "Yes (recommended)",
+                            "defaultValue": "No",
                             "toolTip": "If 'Yes' is selected, Microsoft Defender CSPM will be enabled.<br>Uses the custom initiative <a href=\"https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Deploy-MDFC-Config.html\">Deploy Microsoft Defender for Cloud configuration</a>.",
                             "visible": "[and(equals(steps('management').enableAsc,'Yes'), or(equals(steps('basics').cloudEnvironment.selection, 'AzureCloud'), equals(steps('basics').cloudEnvironment.selection, 'AzureUSGovernment')))]",
                             "constraints": {
@@ -4576,7 +4576,6 @@
                 {
                     "name": "landingZones",
                     "label": "Landing zones configuration",
-                    "visible": false,
                     "subLabel": {
                         "preValidation": "",
                         "postValidation": ""
@@ -5377,7 +5376,7 @@
                                     }
                                 }
                             ],
-                            "visible": "[equals(steps('basics').cloudEnvironment.selection, 'AzureCloud')]"
+                            "visible": "[or(equals(steps('basics').cloudEnvironment.selection, 'AzureCloud'), equals(steps('basics').cloudEnvironment.selection, 'AzureChinaCloud'))]"
                         }
                     ]
                 },
