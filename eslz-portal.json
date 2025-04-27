@@ -924,7 +924,7 @@
                             "constraints": {
                                 "allowedValues": [
                                     {
-                                        "label": "Yes (recommended)",
+                                        "label": "Yes",
                                         "value": "DeployIfNotExists"
                                     },
                                     {
