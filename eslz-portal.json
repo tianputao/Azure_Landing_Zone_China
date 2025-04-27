@@ -933,7 +933,7 @@
                                     }
                                 ]
                             },
-                            "visible": "[equals(steps('management').enableAsc,'Yes')]"
+                            "visible": false
                         }
                     ]
                 },
