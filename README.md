@@ -46,14 +46,10 @@ For organizations where this conceptual architecture fits with the operating mod
 The accelerator is an Azure portal-based deployment that will provide a full implementation of the conceptual architecture, along with opinionated configurations for key components such as management groups and policies.
 
 
+
 ## Deploy Azure platform landing zone
-[![`DTA-Button-ALZ`](https://eslzfiles.blob.core.chinacloudapi.cn/images/azureChinaIcon.png?sanitize=true)](https://portal.azure.cn/#blade/Microsoft_Azure_CreateUIDef/CustomDeploymentBlade/uri/https%3A%2F%2Feslzfiles.blob.core.chinacloudapi.cn%2Fdefault-landingzone-files%2FeslzArm.json/uiFormDefinitionUri/https%3A%2F%2Feslzfiles.blob.core.chinacloudapi.cn%2Fdefault-landingzone-files%2Feslz-portal.json)
+[![`DTA-Button-ALZ`](https://eslzfiles.blob.core.chinacloudapi.cn/images/azureChinaIcon.png?sanitize=true)](https://portal.azure.cn/#blade/Microsoft_Azure_CreateUIDef/CustomDeploymentBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftianputao%2FEAzure_Landing_Zone_China%2Frefs%2Fheads%2Fmain%2FeslzArm%2FeslzArm.json/uiFormDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Ftianputao%2FAzure_Landing_Zone_China%2Frefs%2Fheads%2Fmain%2FeslzArm%2Feslz-portal.json)
 
-## Test
-[![`DTA-Button-ALZ`](https://eslzfiles.blob.core.chinacloudapi.cn/images/azureChinaIcon.png?sanitize=true)](https://portal.azure.cn/#blade/Microsoft_Azure_CreateUIDef/CustomDeploymentBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FEnterprise-Scale%2Frefs%2Fheads%2Fmain%2FeslzArm%2FeslzArm.json/uiFormDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FEnterprise-Scale%2Frefs%2Fheads%2Fmain%2FeslzArm%2Feslz-portal.json)
-
-## Deploy Azure application landing zone
-[![`DTA-Button-ALZ`](https://eslzfiles.blob.core.chinacloudapi.cn/images/azureChinaIcon.png?sanitize=true)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftianputao%2FAzure_Landing_Zone_China%2Fmain%2Fapplication_landing_zone.json)
 
 There are other deployment options available, some that deliver the full architecture using third-party deployment technologies, and others that start from a smaller footprint. For more information, see [Implementation options](./implementation-options.md).
 
