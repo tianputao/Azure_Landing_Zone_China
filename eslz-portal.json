@@ -699,7 +699,7 @@
                             "name": "enableAscForOssDb",
                             "type": "Microsoft.Common.OptionsGroup",
                             "label": "Enable Microsoft Defender for Cloud for open-source relational databases",
-                            "defaultValue": "Yes (recommended)",
+                            "defaultValue": "No",
                             "toolTip": "If 'Yes' is selected, Microsoft Defender for Cloud will be enabled for open-source relational databases.<br>Uses the custom initiative <a href=\"https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Deploy-MDFC-Config.html\">Deploy Microsoft Defender for Cloud configuration</a>.",
                             "visible": "[and(equals(steps('management').enableAsc,'Yes'), equals(steps('basics').cloudEnvironment.selection, 'AzureCloud'))]",
                             "constraints": {
@@ -719,7 +719,7 @@
                             "name": "enableAscForCosmosDbs",
                             "type": "Microsoft.Common.OptionsGroup",
                             "label": "Enable Microsoft Defender for Cloud for Cosmos DB",
-                            "defaultValue": "Yes (recommended)",
+                            "defaultValue": "No",
                             "toolTip": "If 'Yes' is selected, Microsoft Defender for Cloud will be enabled for Cosmos DB.<br>Uses the custom initiative <a href=\"https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Deploy-MDFC-Config.html\">Deploy Microsoft Defender for Cloud configuration</a>.",
                             "visible": "[and(equals(steps('management').enableAsc,'Yes'), equals(steps('basics').cloudEnvironment.selection, 'AzureCloud'))]",
                             "constraints": {
@@ -739,7 +739,7 @@
                             "name": "enableAscForAppServices",
                             "type": "Microsoft.Common.OptionsGroup",
                             "label": "Enable Microsoft Defender for Cloud for AppServices",
-                            "defaultValue": "Yes (recommended)",
+                            "defaultValue": "No",
                             "toolTip": "If 'Yes' is selected, Microsoft Defender for Cloud will be enabled for AppServices.<br>Uses the custom initiative <a href=\"https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Deploy-MDFC-Config.html\">Deploy Microsoft Defender for Cloud configuration</a>.",
                             "visible": "[and(equals(steps('management').enableAsc,'Yes'), equals(steps('basics').cloudEnvironment.selection, 'AzureCloud'))]",
                             "constraints": {
@@ -759,7 +759,7 @@
                             "name": "enableAscForStorage",
                             "type": "Microsoft.Common.OptionsGroup",
                             "label": "Enable Microsoft Defender for Cloud for Storage",
-                            "defaultValue": "Yes (recommended)",
+                            "defaultValue": "No",
                             "toolTip": "If 'Yes' is selected, Microsoft Defender for Cloud will be enabled for Storage.<br>Uses the custom initiative <a href=\"https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Deploy-MDFC-Config.html\">Deploy Microsoft Defender for Cloud configuration</a>.",
                             "visible": "[and(equals(steps('management').enableAsc,'Yes'), or(equals(steps('basics').cloudEnvironment.selection, 'AzureCloud'), equals(steps('basics').cloudEnvironment.selection, 'AzureUSGovernment')))]",
                             "constraints": {
@@ -785,7 +785,7 @@
                             "constraints": {
                                 "allowedValues": [
                                     {
-                                        "label": "Yes (recommended)",
+                                        "label": "Yes",
                                         "value": "DeployIfNotExists"
                                     },
                                     {
@@ -805,7 +805,7 @@
                             "constraints": {
                                 "allowedValues": [
                                     {
-                                        "label": "Yes (recommended)",
+                                        "label": "Yes",
                                         "value": "DeployIfNotExists"
                                     },
                                     {
