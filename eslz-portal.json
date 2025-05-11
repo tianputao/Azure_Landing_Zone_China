@@ -4661,13 +4661,13 @@
                                     "name": "enableEncryptionInTransit",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Ensure encryption in transit is enabled for PaaS services",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "No",
                                     "visible": true,
                                     "toolTip": "If 'Yes' is selected then Azure Policy will ensure PaaS resources uses TLS and SSL.<br>Uses the custom initiative <a href=\"https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Enforce-EncryptTransit_20240509.html\">Deny or Deploy and append TLS requirements and SSL enforcement on resources without Encryption in transit</a>.",
                                     "constraints": {
                                         "allowedValues": [
                                             {
-                                                "label": "Yes (recommended)",
+                                                "label": "Yes",
                                                 "value": "Yes"
                                             },
                                             {
@@ -4685,7 +4685,7 @@
                                     "name": "enableVmMonitoring",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Ensure Azure VMs (Windows & Linux) and Azure Arc-enabled servers are being monitored",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "No",
                                     "toolTip": "Enabling this Azure Policy will ensure that every virtual machine (Windows, Linux, including Azure Arc enabled servers) are onboarded to Azure Monitor and Security.<br>Uses the initiative <a href=\"https://www.azadvertizer.net/azpolicyinitiativesadvertizer/55f3eceb-5573-4f18-9695-226972c6d74a.html\">Enable Azure Monitor for VMs</a>.",
                                     "constraints": {
                                         "allowedValues": [
@@ -4709,7 +4709,7 @@
                                     "name": "enableVmssMonitoring",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Ensure Azure VMSS (Windows & Linux) are being monitored",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "Audit only",
                                     "toolTip": "Enabling this Azure Policy will ensure that every virtual machine scale set (Windows & Linux) are onboarded to Azure Monitor and Security.<br>Uses the initiative <a href=\"https://www.azadvertizer.net/azpolicyinitiativesadvertizer/75714362-cae7-409e-9b99-a8e5075b7fad.html\">Enable Azure Monitor for Virtual Machine Scale Sets</a>.",
                                     "constraints": {
                                         "allowedValues": [
@@ -4733,7 +4733,7 @@
                                     "name": "enableVmHybridMonitoring",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Ensure Hybrid VMs are being monitored",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "No",
                                     "toolTip": "Enabling this Azure Policy will ensure that Azure Arc Enabled Hybrid VMs are monitored.",
                                     "constraints": {
                                         "allowedValues": [
@@ -4757,7 +4757,7 @@
                                     "name": "denyAksPrivileged",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Prevent privileged containers in Kubernetes clusters",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "Audit only",
                                     "toolTip": "If 'Yes' is selected, policy will be assigned to prevent privileged containers in AKS.<br>Uses the policy <a href=\"https://www.azadvertizer.net/azpolicyadvertizer/95edb821-ddaf-4404-9732-666045e056b4.html\">Kubernetes cluster should not allow privileged containers</a>.",
                                     "constraints": {
                                         "allowedValues": [
@@ -4781,7 +4781,7 @@
                                     "name": "denyAksPrivilegedEscalation",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Prevent privileged escalation in Kubernetes clusters",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "Audit only",
                                     "toolTip": "If 'Yes' is selected, policy will be assigned to prevent privileged escalations in AKS.<br>Uses the policy <a href=\"https://www.azadvertizer.net/azpolicyadvertizer/1c6e92c9-99f0-4e55-9cf2-0c234dc48f99.html\">Kubernetes clusters should not allow container privilege escalation</a>.",
                                     "constraints": {
                                         "allowedValues": [
@@ -4829,7 +4829,7 @@
                                     "name": "enableVmBackup",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Ensure Azure VMs (Windows & Linux) are enabled for Azure Backup",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "No",
                                     "toolTip": "If 'Yes' is selected, Azure Policy will be assigned and enable Azure Backup on all VMs in the landing zones.<br>Uses the policy <a href=\"https://www.azadvertizer.net/azpolicyadvertizer/98d0b9f8-fd90-49c9-88e2-d3baf3b0dd86.html\">Configure backup on virtual machines without a given tag to a new recovery services vault with a default policy</a>.",
                                     "constraints": {
                                         "allowedValues": [
@@ -4853,7 +4853,7 @@
                                     "name": "denyMgmtPorts",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Prevent inbound management ports from internet",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "Audit only",
                                     "toolTip": "If 'Yes' is selected, Azure Policy will be assigned and prevent inbound management ports (22, 3389) from internet.<br>Uses the custom policy <a href=\"https://www.azadvertizer.net/azpolicyadvertizer/Deny-MgmtPorts-From-Internet.html\">Management port access from the Internet should be blocked</a>.",
                                     "constraints": {
                                         "allowedValues": [
@@ -4901,7 +4901,7 @@
                                     "name": "denyIpForwarding",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Prevent IP forwarding",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "No",
                                     "toolTip": "If 'Yes' is selected, Azure Policy will be assigned and prevent IP forwarding.<br>Uses the policy <a href=\"https://www.azadvertizer.net/azpolicyadvertizer/88c0b9da-ce96-4b03-9635-f29a937e2900.html\">Network interfaces should disable IP forwarding</a>.",
                                     "constraints": {
                                         "allowedValues": [
@@ -4925,7 +4925,7 @@
                                     "name": "enableSqlEncryption",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Ensure Azure SQL is enabled with transparent data encryption",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "No",
                                     "toolTip": "If 'Yes' is selected TDE will be enabled on all SQL instances.<br>Uses the policy <a href=\"https://www.azadvertizer.net/azpolicyadvertizer/86a912f6-9a06-4e26-b447-11b16ba8659f.html\">Deploy SQL DB transparent data encryption</a>.",
                                     "constraints": {
                                         "allowedValues": [
@@ -4943,7 +4943,7 @@
                                             }
                                         ]
                                     },
-                                    "visible": true
+                                    "visible": false
                                 },
                                 {
                                     "name": "enableSqlThreat",
@@ -4967,7 +4967,7 @@
                                             }
                                         ]
                                     },
-                                    "visible": true
+                                    "visible": false
                                 },
                                 {
                                     "name": "enableSqlAudit",
@@ -4991,13 +4991,13 @@
                                             }
                                         ]
                                     },
-                                    "visible": true
+                                    "visible": false
                                 },
                                 {
                                     "name": "enableStorageHttps",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Ensure secure connections (HTTPS) to storage accounts",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "Audit only",
                                     "toolTip": "If 'Yes' is selected, Azure Policy will be assigned to ensure storage can only be accessed using HTTPS.<br>Uses the policy <a href=\"https://www.azadvertizer.net/azpolicyadvertizer/404c3081-a854-4457-ae30-26a93ef643f9.html\">Secure transfer to storage accounts should be enabled</a>.",
                                     "constraints": {
                                         "allowedValues": [
@@ -5021,7 +5021,7 @@
                                     "name": "enforceKvGuardrails",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Enforce Key Vault recommended guardrails",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "Audit only",
                                     "toolTip": "If 'Yes' is selected, Azure Policy Initiative will be assigned to ensure recommended Key Vault policies are enabled.<br>Uses the custom initiative <a href=\"https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Enforce-Guardrails-KeyVault.html\">Enforce recommended guardrails for Azure Key Vault.</a>.",
                                     "constraints": {
                                         "allowedValues": [
@@ -5045,7 +5045,7 @@
                                     "name": "enforceBackup",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Enforce Backup and Recovery recommended guardrails",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "No",
                                     "toolTip": "If 'Yes' is selected, Azure Policy Initiative will be assigned to ensure recommended Azure Recovery Services policies are enabled.<br>Uses the custom initiative <a href=\"https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Enforce-Backup.html\">Enforce enhanced recovery and backup policies</a>.",
                                     "constraints": {
                                         "allowedValues": [
@@ -5069,7 +5069,7 @@
                                     "name": "auditAppGwWaf",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Audit WAF enabled on Application Gateways",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "Audit only",
                                     "toolTip": "If 'Yes' is selected, Azure Policy will be assigned to audit whether WAF is enabled on Application Gateways.<br>Uses the policy <a href=\"https://www.azadvertizer.net/azpolicyadvertizer/564feb30-bf6a-4854-b4bb-0d2d2d1e6c66.html\">Web Application Firewall (WAF) should be enabled for Application Gateway</a>.",
                                     "constraints": {
                                         "allowedValues": [
@@ -5241,7 +5241,7 @@
                                     "name": "denyPublicEndpoints",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Prevent usage of Public Endpoints for Azure PaaS services in the corp connected landing zones",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "Audit only",
                                     "visible": true,
                                     "toolTip": "If 'Yes' is selected then Azure Policy will prevent PaaS resources to use public endpoints.<br>Uses the custom initiative <a href=\"https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Deny-PublicPaaSEndpoints.html\">Public network access should be disabled for PaaS services</a>.",
                                     "constraints": {
@@ -5309,7 +5309,7 @@
                                     "name": "auditPeDnsZones",
                                     "type": "Microsoft.Common.OptionsGroup",
                                     "label": "Audit the deployment of Private Link Private DNS Zones in the Corp Management Group",
-                                    "defaultValue": "Yes (recommended)",
+                                    "defaultValue": "Audit only",
                                     "toolTip": "If 'Yes' is selected an audit policy will be enabled for checking if any Private Link Private DNS Zones are deployed in subscriptions in the Corp Management Group.<br>Uses the policy <a href=\"https://www.azadvertizer.net/azpolicyadvertizer/Audit-PrivateLinkDnsZones.html\">Audit the creation of Private Link Private DNS Zones</a>.",
                                     "constraints": {
                                         "allowedValues": [
@@ -5927,7 +5927,7 @@
                             "name": "enableWsDataExplorerInitiatives",
                             "type": "Microsoft.Common.OptionsGroup",
                             "label": "Data Explorer",
-                            "defaultValue": "Audit only",
+                            "defaultValue": "Disabled",
                             "visible": true,
                             "toolTip": "If 'Enforce' or 'Audit only' is selected you will have the option to select management groups to apply this initiative to. Check initiative <a href=\"https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Enforce-Guardrails-DataExplorer.html\">here</a>.",
                             "constraints": {
@@ -8186,7 +8186,7 @@
                                 {
                                     "name": "decommSettingsInfo",
                                     "type": "Microsoft.Common.InfoBox",
-                                    "visible": "[equals(steps('basics').cloudEnvironment.selection, 'AzureCloud')]",
+                                    "visible": "[or(equals(steps('basics').cloudEnvironment.selection, 'AzureCloud'), equals(steps('basics').cloudEnvironment.selection, 'AzureChinaCloud'))]",
                                     "options": {
                                         "text": "The following policies will be enabled: <ul><li>Deny the deployment of new resources<li>Deploy an auto VM shutdown policy at UTC 00:00</ul>",
                                         "uri": "https://aka.ms/alz/policies",
@@ -8218,7 +8218,7 @@
                                     "visible": true
                                 }
                             ],
-                            "visible": "[equals(steps('basics').cloudEnvironment.selection, 'AzureCloud')]"
+                            "visible": "[or(equals(steps('basics').cloudEnvironment.selection, 'AzureCloud'), equals(steps('basics').cloudEnvironment.selection, 'AzureChinaCloud'))]"
                         },
                         {
                             "name": "sandboxSection",
@@ -8228,7 +8228,7 @@
                                 {
                                     "name": "sandboxSettingsInfo",
                                     "type": "Microsoft.Common.InfoBox",
-                                    "visible": "[equals(steps('basics').cloudEnvironment.selection, 'AzureCloud')]",
+                                    "visible": "[or(equals(steps('basics').cloudEnvironment.selection, 'AzureCloud'), equals(steps('basics').cloudEnvironment.selection, 'AzureChinaCloud'))]",
                                     "options": {
                                         "text": "The following policies will be enabled: <ul><li>Deny vNET peering across subscriptions<li>Deny the deployment of vWAN/ER/VPN gateways</ul>",
                                         "uri": "https://aka.ms/alz/policies",
@@ -8260,7 +8260,7 @@
                                     "visible": true
                                 }
                             ],
-                            "visible": "[equals(steps('basics').cloudEnvironment.selection, 'AzureCloud')]"
+                            "visible": "[or(equals(steps('basics').cloudEnvironment.selection, 'AzureCloud'), equals(steps('basics').cloudEnvironment.selection, 'AzureChinaCloud'))]"
                         }
                     ]
                 },
