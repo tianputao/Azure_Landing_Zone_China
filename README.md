@@ -47,7 +47,7 @@ The accelerator is an Azure portal-based deployment that will provide a full imp
 
 
 ## Deploy Azure application landing zone for Azure China
-[![`DTA-Button-ALZ`](https://github.com/tianputao/Azure_Landing_Zone_China/blob/main/image/Deploy_Button.png?sanitize=true)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftianputao%2FAzure_Landing_Zone_China%2Fblob%2Fmain%2Fapplication_landing_zone.json)
+[![`DTA-Button-ALZ`](https://github.com/tianputao/Azure_Landing_Zone_China/blob/main/image/Deploy_Button.png?sanitize=true)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ftianputao%2FAzure_Landing_Zone_China%2Frefs%2Fheads%2Fmain%2Fapplication_landing_zone.json)
 
 
 ## Next steps
