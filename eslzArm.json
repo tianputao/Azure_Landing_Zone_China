@@ -1713,7 +1713,7 @@
             "https://management.azure.com/": "managementGroupTemplates/policyAssignments/DINE-PrivateDNSZonesPolicyAssignment.json",
             "https://management.usgovcloudapi.net": "managementGroupTemplates/policyAssignments/gov/fairfaxDINE-PrivateDNSZonesPolicyAssignment.json"
         },
-        "azPrivateDnsPolicyAssignment": "[variables('azPrivateDnsPolicyAssignmentMapping')[environment().resourceManager]]",
+        "azPrivateDnsPolicyAssignment": "[if(contains(variables('azPrivateDnsPolicyAssignmentMapping'), environment().resourceManager), variables('azPrivateDnsPolicyAssignmentMapping')[environment().resourceManager], 'placeholder')]",
         "deploymentUris": {
             "managementGroups": "[uri(deployment().properties.templateLink.uri, 'managementGroupTemplates/mgmtGroupStructure/mgmtGroups.json')]",
             "managementGroupsLite": "[uri(deployment().properties.templateLink.uri, 'managementGroupTemplates/mgmtGroupStructure/mgmtGroupsLite.json')]",
