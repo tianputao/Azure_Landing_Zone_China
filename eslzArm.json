@@ -5923,7 +5923,7 @@
         */
         {
             // Deploying Private DNS Zones policy assignment for PaaS services using built-in policies
-            "condition": "[or(equals(parameters('enablePrivateDnsZonesForLzs'), 'Yes'), equals(parameters('enablePrivateDnsZonesForLzs'), 'Audit'))]",
+            "condition": "[and(or(equals(parameters('enablePrivateDnsZonesForLzs'), 'Yes'), equals(parameters('enablePrivateDnsZonesForLzs'), 'Audit')), not(equals(environment().resourceManager, 'https://management.chinacloudapi.cn/')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
             "name": "[variables('deploymentNames').privateDnsPolicyDeploymentName]",
