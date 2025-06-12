@@ -2181,7 +2181,8 @@
             }
         },
         {
-            // Deploying ALZ Custom RBAC Role Definitions
+            // Deploying ALZ Custom RBAC Role Definitions fix
+            "condition": "[and(not(equals(environment().resourceManager, 'https://management.chinacloudapi.cn/')), true())]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
             "name": "[variables('deploymentNames').roleDefsDeploymentName]",
@@ -2203,7 +2204,8 @@
             The following deployments will deploy the required proactive and preventive Azure policies for ESLZ policy driven governance
         */
         {
-            // Deploying ESLZ custom policies.
+            // Deploying ESLZ custom policies china fix.
+            "condition": "[not(equals(environment().resourceManager, 'https://management.chinacloudapi.cn/'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
             "name": "[variables('deploymentNames').policyDeploymentName]",
@@ -2227,7 +2229,8 @@
             }
         },
         {
-            // Deploying ESLZ custom initiatives.
+            // Deploying ESLZ custom initiatives China fix.
+            "condition": "[not(equals(environment().resourceManager, 'https://management.chinacloudapi.cn/'))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
             "name": "[variables('deploymentNames').initiativeDeploymentName]",
