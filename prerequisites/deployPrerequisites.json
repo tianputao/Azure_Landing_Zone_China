@@ -196,7 +196,7 @@
                             "type": "Microsoft.Resources/deploymentScripts",
                             "apiVersion": "2020-10-01",
                             "name": "alz-prereq-deploymentscript",
-                            "location": "[parameters('location')]",
+                            "location": "chinaeast2",
                             "kind": "AzurePowerShell",
                             "identity": {
                                 "type": "UserAssigned",
