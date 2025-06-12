@@ -34,7 +34,7 @@
     "resources": [
         {
             "type": "Microsoft.Authorization/policyAssignments",
-            "apiVersion": "2024-04-01",
+            "apiVersion": "2024-05-01",
             "name": "[variables('policyAssignmentNames').auditRGL]",
             "properties": {
                 "description": "[variables('policyAssignmentNames').description]",
