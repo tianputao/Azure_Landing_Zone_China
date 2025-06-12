@@ -108,7 +108,7 @@
                                 },
                                 "uaiPrincipalId": {
                                     "type": "string",
-                                    "value": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'uai-alz-prereq'), '2023-07-31-preview').principalId]"
+                                    "value": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', 'uai-alz-prereq'), '2023-01-31').principalId]"
                                 }
                             }
                         }
