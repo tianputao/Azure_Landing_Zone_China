@@ -2181,8 +2181,8 @@
             }
         },
         {
-            // Deploying ALZ Custom RBAC Role Definitions fix
-            "condition": "[and(not(equals(environment().resourceManager, 'https://management.chinacloudapi.cn/')), true())]",
+            // Deploying ALZ Custom RBAC Role Definitions China fix
+            "condition": false,
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2019-10-01",
             "name": "[variables('deploymentNames').roleDefsDeploymentName]",
