@@ -2850,7 +2850,11 @@
                     "contentVersion": "1.0.0.0",
                     "uri": "[variables('deploymentUris').asbPolicyInitiative]"
                 },
-                "parameters": {}
+                "parameters": {
+                    "policySetDefinitionVersion": {
+                        "value": "43.34.0"
+                   }
+                }
             }
         },
         {
@@ -4353,7 +4357,7 @@
         },
         {
             // Assigning Azure Monitor Resource Diagnostics policy to intermediate root management group if condition is true
-            "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'))]",
+            "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), not(equals(environment().name, 'AzureChinaCloud')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2020-10-01",
             "name": "[variables('deploymentNames').resourceDiagnosticsPolicyDeploymentName]",
@@ -4386,7 +4390,7 @@
         },
         {
             // Assigning Azure Activity Diagnostics Log policy to intermediate root management group if condition is true
-            "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'))]",
+            "condition": "[and(or(not(empty(parameters('singlePlatformSubscriptionId'))), not(empty(parameters('managementSubscriptionId')))), equals(parameters('enableLogAnalytics'), 'Yes'), not(equals(environment().name, 'AzureChinaCloud')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2020-10-01",
             "name": "[variables('deploymentNames').activityDiagnosticsPolicyDeploymentName]",
@@ -4414,7 +4418,7 @@
         },
         {
             // Assigning Cost Optimization policy initiative to intermediate root management group
-            "condition": "[or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId'))))]",
+            "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), not(equals(environment().name, 'AzureChinaCloud')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2020-10-01",
             "name": "[variables('deploymentNames').costOptimizationDeploymentName]",
@@ -4438,7 +4442,7 @@
         },
         {
             // Assigning Trusted Launch policy initiative to intermediate root management group
-            "condition": "[or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId'))))]",
+            "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), not(equals(environment().name, 'AzureChinaCloud')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2020-10-01",
             "name": "[variables('deploymentNames').trustedLaunchDeploymentName]",
@@ -4462,7 +4466,7 @@
         },
         {
             // Assigning Zone Resilient policy initiative to intermediate root management group
-            "condition": "[or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId'))))]",
+            "condition": "[and(or(not(empty(parameters('managementSubscriptionId'))), not(empty(parameters('singlePlatformSubscriptionId')))), not(equals(environment().name, 'AzureChinaCloud')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2020-10-01",
             "name": "[variables('deploymentNames').zoneResilientDeploymentName]",
@@ -6798,7 +6802,7 @@
         },
         {
             // Assigning deny public endpoint initiative to corp connected landing zones management group if condition is true
-            "condition": "[or(equals(parameters('denyPublicEndpoints'), 'Yes'),equals(parameters('denyPublicEndpoints'), 'Audit'))]",
+            "condition": "[and(or(equals(parameters('denyPublicEndpoints'), 'Yes'),equals(parameters('denyPublicEndpoints'), 'Audit')), not(equals(environment().name, 'AzureChinaCloud')))]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2020-10-01",
             "name": "[variables('deploymentNames').publicEndpointPolicyDeploymentName]",
